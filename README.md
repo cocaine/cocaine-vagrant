@@ -31,17 +31,15 @@ vagrant up
 
 ## Running Cocaine Cloud
 
-# shell into the VM if you are not already there
+* shell into the VM if you are not already there
+```
 vagrant ssh
+```
 
 
 ## Test Your Cocaine Cloud Instance
 
 ```
-cocaine-tool info
-```
-
-Expected output:
-```
+$: cocaine-tool info
 {}
 ```
