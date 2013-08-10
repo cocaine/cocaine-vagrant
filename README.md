@@ -1,12 +1,6 @@
-cocaine-vagrant-installer
-=========================
-
-Vagrant installer for Cocaine Cloud
-
-
 # Overview
 
-This project provides a mechanism to set up a Vagrant Virtual Machine with the following Cocaine Cloud components:
+This project provides a mechanism to set up a Vagrant VM with the following Cocaine Cloud components:
 
 * Cocaine Core
 * Cocaine Runtime
