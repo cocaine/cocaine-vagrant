@@ -9,6 +9,7 @@ apt_repository "cocaine" do
 end
 
 package "libcocaine-core2"
+package "cocaine-runtime"
 
 python_pip "cocaine" do
   version "0.10.6.5"
