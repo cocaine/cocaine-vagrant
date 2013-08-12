@@ -20,7 +20,7 @@ end
 # Install tornado-proxy
 include_recipe "git"
 
-git "/vagrant/cocaine-tornado-proxy" do
+git "/tmp/cocaine-tornado-proxy" do
   repository "https://github.com/noxiouz/cocaine-TornadoProxy.git"
   reference "master"
   action :sync
@@ -28,11 +28,29 @@ end
 
 bash "install cocaine-tornado-proxy" do
   user "root"
-  cwd "/vagrant/cocaine-tornado-proxy"
+  cwd "/tmp/cocaine-tornado-proxy"
   code <<-EOH
   /usr/bin/python setup.py install
   EOH
 end
 
+python_pip "pillow"
+python_pip "qrcode"
 
+bash "install QR example" do
+  user "root"
+  cwd "/vagrant/examples/qr"
+  code <<-EOH
+  cocaine-tool app upload
+  EOH
+end
 
+bash "bootstrap" do
+  user "root"
+  cwd "/"
+  code <<-EOH
+  cocaine-tool profile upload --name default --profile='{"pool-limit": 4}'
+  cocaine-tool app start --name qr --profile default
+  cocaine-tornado-proxy --port 80&
+  EOH
+end
