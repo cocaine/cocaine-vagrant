@@ -4,7 +4,7 @@ This project provides a mechanism to set up a Vagrant VM with the following Coca
 
 * Cocaine Core
 * Cocaine Runtime
-* Cocaine Framework Python
+* Cocaine Framework Python (with embedded cocaine proxy)
 
 
 ## Requirements
