@@ -64,3 +64,10 @@ cocaine-tool info
     }
 }
 ```
+
+Open your browser and type:
+```
+http://localhost:48080/qr/generate/?message=Hello,%20world!
+```
+
+A cloud application show answer to you.
