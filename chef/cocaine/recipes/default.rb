@@ -12,30 +12,22 @@ package "libcocaine-core2"
 package "cocaine-runtime"
 
 python_pip "cocaine" do
-  version "0.10.6.5"
+  version "0.10.6.6"
   action :install
 end
 
-
-# Install tornado-proxy
-include_recipe "git"
-
-git "/tmp/cocaine-tornado-proxy" do
-  repository "https://github.com/noxiouz/cocaine-TornadoProxy.git"
-  reference "master"
-  action :sync
-end
-
-bash "install cocaine-tornado-proxy" do
-  user "root"
-  cwd "/tmp/cocaine-tornado-proxy"
-  code <<-EOH
-  /usr/bin/python setup.py install
-  EOH
-end
-
+##### Examples #####
 python_pip "pillow"
 python_pip "qrcode"
+
+bash "configure proxy" do
+  user "root"
+  cwd "/vagrant/examples"
+  code <<-EOH
+  mkdir /etc/cocaine
+  cp cocaine-tornado-proxy.conf /etc/cocaine/cocaine-tornado-proxy.conf
+  EOH
+end
 
 bash "install QR example" do
   user "root"
@@ -51,6 +43,6 @@ bash "bootstrap" do
   code <<-EOH
   cocaine-tool profile upload --name default --profile='{"pool-limit": 4}'
   cocaine-tool app start --name qr --profile default
-  cocaine-tornado-proxy --port 80&
+  cocaine-tool proxy start --daemon --port=80
   EOH
 end
