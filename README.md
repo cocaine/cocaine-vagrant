@@ -34,13 +34,33 @@ vagrant up
 * shell into the VM if you are not already there
 
 ```
-:~$ vagrant ssh
+vagrant ssh
 ```
 
 
 ## Test Your Cocaine Cloud Instance
 
 ```
-:~$ cocaine-tool info
-{}
+cocaine-tool info
+{
+    "apps": {
+        "qr": {
+            "load-median": 0, 
+            "profile": "default", 
+            "sessions": {
+                "pending": 0
+            }, 
+            "queue": {
+                "depth": 0, 
+                "capacity": 100
+            }, 
+            "state": "running", 
+            "slaves": {
+                "active": 0, 
+                "idle": 1, 
+                "capacity": 4
+            }
+        }
+    }
+}
 ```
