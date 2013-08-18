@@ -39,9 +39,13 @@ vagrant ssh
 
 
 ## Test Your Cocaine Cloud Instance
-
+At this point, there is one application running - QR-code generator. To be sure, that it is running, type:
 ```
 cocaine-tool info
+```
+
+The answer will be (approximately):
+```
 {
     "apps": {
         "qr": {
@@ -65,9 +69,16 @@ cocaine-tool info
 }
 ```
 
-Open your browser and type:
+In this example we provide embedded http proxy for Cocaine applications. Check if it is running:
 ```
-http://localhost:48080/qr/generate/?message=Hello,%20world!
+sudo cocaine-tool proxy status
 ```
 
-A cloud application show answer to you.
+If the answer is something like `Running: 4893` (pid number may vary) that's ok.
+
+Finally, open your browser at your wish and type:
+```
+http://localhost:48080/qr/generate/?message=Hello,%20cocaine%20world!
+```
+
+The cloud application shows answer to you.
