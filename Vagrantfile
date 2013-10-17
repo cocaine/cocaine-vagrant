@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.omnibus.chef_version = "11.4.0"
+  config.omnibus.chef_version = "11.6.0"
 
   config.vm.define "cocaine-install"
   config.vm.box = "precise64"
@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, guest: 80, host: 48080
 
   config.berkshelf.enabled = true
-  
+
   config.vm.provision :chef_solo do |chef|
     chef.add_recipe 'apt::default'
     chef.add_recipe 'git'
