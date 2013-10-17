@@ -23,8 +23,8 @@ This project provides a mechanism to set up a Vagrant VM with the following Coca
 ## Installation
 
 ```
-git clone https://github.com/3Hren/cocaine-vagrant-installer.git
-cd cocaine-vagrant-installer
+git clone https://github.com/cocaine/cocaine-vagrant.git
+cd cocaine-vagrant
 vagrant up
 ```
 
