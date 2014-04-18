@@ -1,4 +1,4 @@
-site :opscode
+source "https://api.berkshelf.com"
 
 cookbook 'apt', '1.10.0'
 cookbook 'git'
