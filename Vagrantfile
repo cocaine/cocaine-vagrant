@@ -1,6 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+Vagrant.require_version ">= 1.5.4"
+
 Vagrant.configure("2") do |config|
   config.omnibus.chef_version = "11.6.0"
 

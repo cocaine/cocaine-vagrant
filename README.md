@@ -12,10 +12,10 @@ This project provides a mechanism to set up a Vagrant VM with the following Coca
 * VirtualBox
 
 * Vagrant
-    - Download it from http://www.vagrantup.com (version 1.2 or higher)
+    - Download it from http://www.vagrantup.com (version 1.5.4 or higher)
     - Install required plugins:  
-     `vagrant plugin install vagrant-berkshelf`  
      `vagrant plugin install vagrant-omnibus`
+     `vagrant plugin install vagrant-berkshelf --plugin-version '>= 2.0.1'`
      
 * Ruby 1.9.3
 
