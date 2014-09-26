@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   # plain precise64 box with kernel upgraded to 3.8
   # and GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"
   config.vm.box = "precise64-docker"
-  config.vm.box_url = "http://repo.reverbrain.com/vagrant-base/precise64-docker.box"
+  config.vm.box_url = "https://github.com/cocaine/cocaine-vagrant/releases/download/v0.11/precise64-docker.box"
 
 #  config.vm.network :forwarded_port, guest: 80, host: 48080
   config.vm.network "private_network", ip: "10.11.12.13"
