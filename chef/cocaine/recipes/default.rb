@@ -10,7 +10,7 @@ end
 
 bash 'Installing Cocaine packages' do
   code <<-EOH
-apt-get install -y \
+apt-get install -y --force-yes \
 cocaine-runtime \
 libcocaine-plugin-docker2
 EOH
@@ -24,22 +24,6 @@ end
 python_pip 'cocaine-tools' do
   version '0.11.6.1'
   action :install
-end
-
-bash 'Creating cocaine app control objects' do
-  code <<-EOH
-  cocaine-tool runlist create --name default
-  cocaine-tool profile upload --name default --profile='{"pool-limit": 4, "isolate": {"type": "process", "args": {"spool": "/var/spool/cocaine"}}}'
-  EOH
-end
-
-python_pip 'pillow'
-python_pip 'qrcode'
-
-bash 'Installing QR-code example' do
-  user 'root'
-  cwd '/vagrant/examples/qr'
-  code 'cocaine-tool app upload && cocaine-tool app restart --name qr --profile default'
 end
 
 bash 'Configuring cocaine-runtime and proxy' do
@@ -59,7 +43,23 @@ EOF
 
   service cocaine-runtime restart
 fi
-EOH
+  EOH
+end
+
+bash 'Creating cocaine app control objects' do
+  code <<-EOH
+  cocaine-tool runlist create --name default
+  cocaine-tool profile upload --name default --profile='{"pool-limit": 4, "isolate": {"type": "process", "args": {"spool": "/var/spool/cocaine"}}}'
+  EOH
+end
+
+python_pip 'pillow'
+python_pip 'qrcode'
+
+bash 'Installing QR-code example' do
+  user 'root'
+  cwd '/vagrant/examples/qr'
+  code 'cocaine-tool app upload && cocaine-tool app restart --name qr --profile default'
 end
 
 bash 'Bootstrapping' do
