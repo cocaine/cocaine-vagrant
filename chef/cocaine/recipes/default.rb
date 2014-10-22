@@ -4,8 +4,8 @@ bash 'Turning on reverbrain repo' do
   code <<-EOH
   cp -v /vagrant/chef/cocaine/repo.reverbrain.conf /etc/apt/sources.list.d/reverbrain.list
 curl http://repo.reverbrain.com/REVERBRAIN.GPG | apt-key add -
+apt-get update
 EOH
-  code 'apt-get update'
 end
 
 bash 'Installing Cocaine packages' do
