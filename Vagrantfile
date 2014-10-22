@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.berkshelf.enabled = true
 
-  config.vm.provider "virtualbox" do |v|
+  config.vm.provider 'virtualbox' do |v|
     v.memory = 1024
   end
 
