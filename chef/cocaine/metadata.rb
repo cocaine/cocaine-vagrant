@@ -1,1 +1,2 @@
-name             'cocaine'
+name      'cocaine'
+depends   'python'
