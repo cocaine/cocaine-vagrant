@@ -1,19 +1,21 @@
 include_recipe 'python'
 
-bash 'Turning on reverbrain repo' do
+bash 'Turn on reverbrain repo' do
   code <<-EOH
-  cp -v /vagrant/chef/cocaine/repo.reverbrain.conf /etc/apt/sources.list.d/reverbrain.list
+cp -v /vagrant/chef/cocaine/repo.reverbrain.conf /etc/apt/sources.list.d/reverbrain.list
+
 curl http://repo.reverbrain.com/REVERBRAIN.GPG | apt-key add -
+
 apt-get update
-EOH
+  EOH
 end
 
-bash 'Installing Cocaine packages' do
-  code <<-EOH
-apt-get install -y --force-yes \
-cocaine-runtime \
-libcocaine-plugin-docker2
-EOH
+package 'libcocaine-core2' do
+  options '--force-yes'
+end
+
+package 'cocaine-runtime' do
+  options '--force-yes'
 end
 
 python_pip 'cocaine' do
@@ -27,7 +29,6 @@ python_pip 'cocaine-tools' do
 end
 
 bash 'Configuring cocaine-runtime and proxy' do
-  user 'root'
   cwd '/vagrant/examples'
   code <<-EOH
 if [ ! -f /etc/cocaine/cocaine.conf ]; then
@@ -57,13 +58,11 @@ python_pip 'pillow'
 python_pip 'qrcode'
 
 bash 'Installing QR-code example' do
-  user 'root'
   cwd '/vagrant/examples/qr'
   code 'cocaine-tool app upload && cocaine-tool app restart --name qr --profile default'
 end
 
 bash 'Bootstrapping' do
-  user 'root'
   cwd '/'
   code 'cocaine-tool proxy start --daemon --port=80'
 end
