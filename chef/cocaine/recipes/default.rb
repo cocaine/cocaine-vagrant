@@ -22,8 +22,6 @@ apt-get install -y\
   libcocaine-core2 \
   cocaine-runtime \
   cocaine-framework-native \
-  libcocaine-plugin-chrono2 \
-  libcocaine-plugin-cache2 \
   libcocaine-plugin-docker2 \
   libcocaine-dev
 EOH
