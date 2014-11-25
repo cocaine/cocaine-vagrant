@@ -17,7 +17,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 80, host: 48080
 
   config.berkshelf.enabled = true
-
+  config.berkshelf.berksfile_path = './Berksfile'
+  
   config.vm.provider 'virtualbox' do |v|
     v.memory = 1024
   end
