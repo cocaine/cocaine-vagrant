@@ -54,7 +54,9 @@ bash 'Creating cocaine app control objects' do
   EOH
 end
 
-python_pip 'pillow'
+python_pip 'pillow' do
+  version '2.8.0'
+end
 python_pip 'qrcode'
 
 bash 'Installing QR-code example' do
