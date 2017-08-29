@@ -16,8 +16,9 @@ This project provides a mechanism to set up a Vagrant VM with the following Coca
     - Install required plugins:  
      `vagrant plugin install vagrant-omnibus`    
      `vagrant plugin install vagrant-berkshelf --plugin-version '>= 2.0.1'`
+    - Install Chef-DK from https://downloads.chef.io/chefdk
      
-* Ruby 1.9.3
+* Ruby 2.3+
 
 
 ## Installation
