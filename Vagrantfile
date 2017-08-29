@@ -6,7 +6,7 @@ VAGRANTFILE_API_VERSION = '2'
 Vagrant.require_version '>= 1.5.4'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.omnibus.chef_version = '11.6.0'
+  config.omnibus.chef_version = '12.21.4'
 
   # Plain precise64 box with kernel upgraded to 3.8 and GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"
   config.vm.define 'cocaine-install'
@@ -23,8 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision :chef_solo do |chef|
-    chef.add_recipe 'apt::default'
-    chef.add_recipe 'python'
+    chef.add_recipe 'poise-python'
     chef.add_recipe 'cocaine'
   end
 end
